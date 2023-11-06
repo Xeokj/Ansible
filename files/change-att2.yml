@@ -1,0 +1,10 @@
+---
+- name: change file attributes
+  hosts: 192.168.56.114
+  become: yes
+  remote_user: worker
+  tasks:
+    - sefcontext:
+        target: /home/worker/fileA
+        setype: samba_share_t
+        state: present

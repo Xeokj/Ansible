@@ -1,0 +1,18 @@
+---
+- name: handler example
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: check handler
+      command: echo "Your tasks are completed"
+      notify: restart httpd
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+    - name: restart mariadb
+      service:
+        name: mariadb
+        state: restarted

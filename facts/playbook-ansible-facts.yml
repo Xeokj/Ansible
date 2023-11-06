@@ -1,0 +1,8 @@
+---
+- name: Fact Dump
+  hosts: 192.168.56.114
+  tasks:
+    - name: Print all facts
+      debug:
+        var: ansible_facts
+

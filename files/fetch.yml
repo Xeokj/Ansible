@@ -1,0 +1,8 @@
+---
+- name: fetch
+  hosts: 192.168.56.114
+  remote_user: worker
+  tasks:
+    - fetch:
+        src: test/fileAA
+        dest: /home/user01/files/fileAA

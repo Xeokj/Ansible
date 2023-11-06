@@ -1,0 +1,12 @@
+---
+- name: ssh key test
+  hosts: all
+  tasks:
+    - name: key copy
+      authorized_key:
+        user: user01
+        state: present
+        key: "{{ item }}"
+      with_file:
+        - ~/.ssh/id_rsa.pub
+

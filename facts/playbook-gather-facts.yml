@@ -1,0 +1,7 @@
+---
+- name: This play gathers no facts automatically
+  hosts: 192.168.56.114
+  remote_user: worker
+  gather_facts: no
+
+

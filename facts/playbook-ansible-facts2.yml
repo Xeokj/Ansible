@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: worker
+  tasks:
+    - name: Prints Various Ansible Facts
+      debug:
+        msg: >
+          The defaults IPv4 address of {{ ansible_facts['fqdn'] }} is {{ ansible_facts.default_ipv4.address }}
+
+

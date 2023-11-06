@@ -1,0 +1,8 @@
+---
+- name: copy file
+  hosts: 192.168.56.114
+  remote_user: worker
+  tasks:
+    - copy:
+        src: fileB
+        dest: /home/worker/fileB
