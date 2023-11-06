@@ -32,4 +32,15 @@ worker ip = 192.168.56.114
 3. secret.yml 파일의 변수를 이용하여 ansibleuser1 유저를 생성하고 pwhash를 사용하여 비밀번호를 지정하는 create_user.yml 파일 제작  
 
 
+# 231102  
+## 과제 1  
+변수 packages 하위에 dhcp, bind를 등록하고, 각 패키지에 맞는 서비스를 추가 등록하여 반복문을 사용하여 패키지를 실행하는 플레이북 생성 및 실행하기  
 
+## 과제 2  
+abc 변수에 저장된 1이 0보다 작거나 ansible_distribution이 RedHat이 아니라면 실패했다는 메시지를 출력(fail 모듈 사용)  
+
+## 과제 3  
+웹 서비스와 ftpd를 재시작하는 핸들러를 만들고 mariadb가 실행 중이라면(조건) 웹 서비스와 ftpd를 순차적으로(반복) 재시작  
+
+
+   
