@@ -1,0 +1,13 @@
+---
+- name: starting httpd
+  hosts: all
+  become: yes
+  vars:
+    service: httpd
+  tasks:
+    - name: httpd start
+      service:
+        name: "{{ service }}"
+        state: started
+
+

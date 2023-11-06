@@ -1,0 +1,14 @@
+---
+- name: Install and Restart the Web Server
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: Install Web Server
+      yum:
+        name: httpd
+        state: latest
+    - name: Restart Web Server
+      service:
+        name: httpd
+        state: restarted

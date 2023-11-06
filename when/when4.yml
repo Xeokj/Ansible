@@ -1,0 +1,29 @@
+---
+- name: and or test
+  hosts: 192.168.56.114
+  remote_user: worker
+  vars:
+    - A: "a"
+    - B: "b"
+  tasks:
+    - name: and test 1
+      debug:
+        msg: >
+          This is working
+      when: A == "a" and B == "c"
+    - name: and test 2
+      debug:
+        msg: >
+          This is working
+      when: A == "a" and B == "b"
+    - name: or test 1
+      debug:
+        msg: >
+          This is working
+      when: A == "a" or B == "c"
+    - name: or test 2
+      debug:
+        msg: >
+          This is working
+      when: A == "b" or B == "c"
+

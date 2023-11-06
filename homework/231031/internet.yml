@@ -1,0 +1,42 @@
+---
+- name: plays
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: install firewalld
+      yum:
+        name: firewalld
+        state: present
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+    - name: install mariadb
+      yum:
+        name: mariadb-server
+        state: present
+    - name: install php
+      yum:
+        name: php
+        state: present
+    - name: install php-mysqlnd
+      yum:
+        name: php
+        state: present
+    - name: start firewalld
+      service:
+        name: firewalld
+        state: started
+    - name: firewall register
+      shell: firewall-cmd --permanent --add-port=80/tcp
+    - name: firewall reload
+      shell: firewall-cmd --reload
+    - name: start mariadb
+      service:
+        name: mariadb
+        state: started
+
+

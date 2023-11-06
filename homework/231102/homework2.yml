@@ -1,0 +1,11 @@
+---
+- name: failure
+  hosts: all
+  vars:
+    abc: 1
+  tasks:
+    - name: failure test
+      fail:
+        msg: >
+          Failed!! Try again.
+      when: abc < 0 or ansible_distribution != "RedHat"

@@ -1,0 +1,16 @@
+---
+- name:
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  vars:
+    web_db:
+      - httpd
+      - mariadb
+  tasks:
+    - service:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ web_db }}"
+      when: '"A" == "A"'
+

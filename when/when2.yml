@@ -1,0 +1,14 @@
+---
+- name: boolean test
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  vars:
+    my_service: mariadb
+  tasks:
+    - name: mariadb is started
+      service:
+        name: mariadb
+        state: started
+      when: my_service is defined
+

@@ -1,0 +1,8 @@
+[servera]
+www.worker.com
+192.168.56.10
+
+[serverb]
+192.168.56.11
+
+

@@ -1,0 +1,14 @@
+---
+- name: boolean test 2
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  vars:
+    run_my_task: true
+  tasks:
+    - name: mariadb is stopped
+      service:
+        name: mariadb
+        state: stopped
+      when: "{{ run_my_task }}"
+

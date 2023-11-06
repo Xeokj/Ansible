@@ -1,0 +1,18 @@
+---
+- name: inventory vars check
+  hosts: localhost
+  remote_user: user01
+  tasks:
+    - name: vars check
+      debug:
+        var: hostnamexx
+
+- name: inventory vars check
+  hosts: 192.168.56.113
+  remote_user: worker
+  tasks:
+    - name: vars check
+      debug:
+        var: hostnamexx
+
+

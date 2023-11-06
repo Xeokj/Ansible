@@ -1,0 +1,12 @@
+---
+- name: /etc/hosts is up to date
+  hosts: 192.168.56.113
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: master in /etc/hosts
+      lineinfile:
+        path: /etc/hosts
+        line: '192.168.56.107 master'
+        state: present
+

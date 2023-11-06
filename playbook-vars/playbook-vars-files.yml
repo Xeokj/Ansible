@@ -1,0 +1,13 @@
+---
+- hosts: all
+  vars_files:
+    - user.yml
+  tasks:
+    - name: print user variable
+      debug:
+        var: user
+    - name: print home variable
+      debug:
+        var: home
+
+

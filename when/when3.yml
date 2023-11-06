@@ -1,0 +1,23 @@
+---
+- name: Redhat in keyword
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  gather_facts: yes
+  vars:
+    supported_distros:
+      - CentOS
+      - Redhat
+      - Fedora
+  tasks:
+    - name: debugging
+      debug:
+        msg: >
+          ansible_distribution is "{{ ansible_distribution }}"
+
+    - name: stopped mariadb using service, where supported
+      service:
+        name: mariadb
+        state: stopped
+      when: ansible_distribution in supported_distros
+

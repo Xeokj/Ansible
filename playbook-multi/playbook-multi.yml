@@ -1,0 +1,30 @@
+---
+- name: first play
+  hosts: localhost
+  remote_user: user01
+  become: yes
+  tasks:
+    - name: first task
+      yum:
+        name: httpd
+        state: present
+    - name: second task
+      service:
+        name: httpd
+        enabled: true
+
+- name: second play
+  hosts: 192.168.56.113
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: first task
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: second task
+      service:
+        name: mariadb
+        enabled: true
+
+

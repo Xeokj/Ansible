@@ -1,0 +1,26 @@
+---
+- name: homework 3
+  hosts: all
+  become: yes
+  tasks:
+    - name: install vsftpd
+      yum:
+        name: vsftpd
+        state: latest
+    - name: restert mariadb
+      service:
+        name: mariadb
+        state: restarted
+      notify:
+        - restart httpd
+        - restart vsftpd
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+    - name: restart vsftpd
+      service:
+        name: vsftpd
+        state: restarted

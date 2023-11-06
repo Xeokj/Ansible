@@ -1,0 +1,14 @@
+---
+- name: Install and Restart the DB Server
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: Install DB Server
+      yum:
+        name: mariadb
+        state: latest
+    - name: Restart DB Server
+      service:
+        name: mariadb
+        state: restarted

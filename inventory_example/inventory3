@@ -1,0 +1,10 @@
+[servera]
+www.worker.com
+
+[serverb]
+192.168.56.11
+
+[server:children]
+servera
+serverb
+

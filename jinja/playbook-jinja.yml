@@ -1,0 +1,12 @@
+---
+- name: jinja test
+  hosts: 192.168.56.114
+  remote_user: worker
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Render jinja template
+      template:
+        src: template.j2
+        dest: test/rendered_template.txt

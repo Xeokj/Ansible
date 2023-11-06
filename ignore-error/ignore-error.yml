@@ -1,0 +1,21 @@
+---
+- name: Latest version of notapkg is installed
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - yum:
+        name: notapkg
+        state: latest
+      ignore_errors: yes
+
+- name: Latest version of ftpd is installed
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - yum:
+        name: gnutls
+        state: latest
+      ignore_errors: yes
+

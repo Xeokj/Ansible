@@ -1,0 +1,16 @@
+---
+- name: user group check
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - user:
+        name: "{{ item.name }}"
+        group: "{{ item.group }}"
+        state: present
+      loop:
+        - name: user01
+          group: user01
+        - name: user02
+          group: user02
+

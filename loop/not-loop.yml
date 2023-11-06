@@ -1,0 +1,15 @@
+---
+- name: httpd and mariadb are running
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  tasks:
+    - name: httpd is running
+      service:
+        name: httpd
+        state: started
+    - name: mariadb is running
+      service:
+        name: mariadb
+        state: started
+

@@ -1,0 +1,49 @@
+---
+- name: configure vars
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: true
+  vars_files:
+    variables.yaml
+  tasks:
+    - name: latest version of all required packages installed
+      yum:
+        name:
+          - "{{ web_pkg }}"
+          - "{{ firewall_pkg }}"
+          - "{{ python_pkg }}"
+        state: latest
+    - name: firewalld enabled and running
+      service:
+        name: "{{ firewall_service }}"
+        enabled: true
+        state: started
+        daemon_reload: true
+    - name: httpd enabled and running
+      service:
+        name: "{{ web_service }}"
+        enabled: true
+        state: started
+        daemon_reload: true
+    - name: firewall permits http service
+      service:
+        name: "{{ rule }}"
+        enabled: true
+        state: started
+        daemon_reload: true
+    - name: test html page is installed
+      get_url:
+        url: "http://192.168.56.107/test.html"
+        dest: /var/www/html/test.html
+        mode: 0644
+
+- name: test internet web server
+  hosts: localhost
+  vars_files:
+    variables.yaml
+  tasks:
+    - name: connect to internet web server
+      uri:
+        url: http://192.168.56.114/test.html
+        status_code: 200
+

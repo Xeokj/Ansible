@@ -1,0 +1,20 @@
+---
+- name: 
+  hosts: all
+  become: yes
+  vars:
+    - packages: [dhcp*, bind]
+    - services: [dhcpd, named]
+  tasks:
+    - name: install dhcp packages and bind packages
+      yum:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ packages }}"
+    - name: start dhcpd and named
+      service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop: "{{ services }}"
+      
