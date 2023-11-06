@@ -1,0 +1,11 @@
+---
+- name: Configure Web Server
+  hosts: 192.168.56.114
+  remote_user: worker
+  become: yes
+  roles:
+    - web_server
+  tasks:
+    - name: variable test
+      debug:
+        var: web_server_port
